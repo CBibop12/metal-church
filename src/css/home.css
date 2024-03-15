@@ -1,0 +1,114 @@
+.top-title-sec {
+    padding-top: 123px;
+    position: relative;
+    width: 100%;
+    z-index: 4;
+}
+.top-title-text {
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 30px;
+}
+.top-title-sec h2 {
+    color: white;
+    font-family: var(--bebas);
+    font-size: 64px;
+    font-weight: bold;
+}
+.top-title-text h2 span {
+    color: var(--orange);
+}
+.img-overlay {
+    background-color: rgba(0, 0, 0, 0.7);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
+.top-title-img {
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    position: relative;
+}
+.top-title-img img {
+    width: 100%;
+    filter: blur(5px);
+}
+.book-link {
+    height: 60px;
+    line-height: 60px;
+    text-align: center;
+    color: white;
+    font-size: 28px;
+    font-family: var(--bebas);
+    background-color: var(--orange);
+    border: 2px solid var(--orange);
+    transition: .2s;
+    margin-top: 40px;
+    width: 270px;
+}
+.book-link:hover {
+    background-color: white;
+    color: var(--orange);
+}
+
+.why-choose-us-sec {
+    display: flex;
+    gap: 20px;
+}
+.why-us-item {
+    flex: 1 0 0;
+    padding: 15px;
+    background-color: #161616;
+}
+.why-us-img {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+.why-us-img img {
+    height: 70px;
+}
+.why-us-item h4 {
+    font-size: 30px;
+    font-family: var(--bebas);
+    letter-spacing: 1.3px;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 16px;
+}
+.why-us-item p {
+    font-family: var(--roboto);
+    font-size: 20px;
+    color: rgb(82, 82, 82);
+    text-align: center;
+}
+.try-yourself {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+.about-us-sec {
+    display: flex;
+    gap: 20px;
+}
+.about-us-sec p {
+    font-family: var(--roboto);
+    font-size: 20px;
+    color: #707070;
+    flex: 1 0 0;
+}
+.about-us-poster {
+    position: relative;
+    flex: 1 0 0;
+    height: 600px;
+    overflow: hidden;
+}
+.about-us-poster img {
+    width: 100%;
+}

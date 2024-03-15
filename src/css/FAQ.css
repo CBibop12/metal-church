@@ -1,0 +1,38 @@
+.accordion-item {
+    width: 100%;
+
+    margin-bottom: 30px;
+}
+.accordionItem-cover {
+    font-size: 45px;
+    font-family: var(--bebas);
+    color: white;
+    height: 100px;
+    line-height: 100px;
+    border-bottom: 2px solid white;
+    display: flex;
+    justify-content: space-between;
+}
+.accordionItem-cover span {
+    display: flex;
+    justify-content: center;
+}
+
+.accordionItem-cover span img{
+    width: 40px;
+}
+.accordionItem-cover span.open {
+    transform: rotate(180deg)
+}
+.accordion-item p {
+    padding-top: 15px;
+    font-size: 36px;
+    font-family: var(--bebas);
+    color: #999999;
+    display: none;
+    letter-spacing: 0.5px;
+}
+
+.accordion-item p.shown {
+    display: block;
+}

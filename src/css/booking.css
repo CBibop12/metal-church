@@ -1,0 +1,84 @@
+.title-p {
+    font-size: 50px;
+    color: #303030;
+    font-family: var(--bebas);
+    margin-top: -10px;
+    margin-bottom: 100px;
+}
+.full-name-sec {
+    display: flex;
+    gap: 50px;
+}
+form {
+    width: 75%;
+}
+.inputBlock {
+    flex: 1 0 0;
+    margin-bottom: 30px;
+}
+.inputBlock h5 {
+    font-family: var(--bebas);
+    font-size: 24px;
+    color: #707070;
+}
+
+.inputBlock input {
+    width: 100%;
+    height: 60px;
+    line-height: 60px;
+    padding: 0 16px;
+    background-color: #fff;
+    border: none;
+    font-family: var(--roboto);
+    font-size: 18px;
+    color: rgb(20, 20, 20);
+    flex: 1 0 0;
+    outline: none;
+}
+
+.p-datepicker:not(.p-datepicker-inline) {
+    background-color: #2d2d2d;
+    font-family: var(--bebas);
+}
+
+.p-datepicker .p-datepicker-header .p-datepicker-title .p-datepicker-year, .p-datepicker .p-datepicker-header .p-datepicker-title .p-datepicker-month  {
+    font-size: 28px;
+    font-family: var(--bebas);
+    transition: .2s;
+    padding: 7px;
+}
+.p-datepicker .p-datepicker-header .p-datepicker-title .p-datepicker-year:hover, .p-datepicker:hover .p-datepicker-header .p-datepicker-title .p-datepicker-month:hover {
+    color: var(--orange);
+}
+.p-datepicker table td {
+    padding: 12px;
+    font-size: 22px;
+}
+.p-datepicker table th {
+    padding: 12px;
+    font-size: 24px;
+    color: var(--orange);
+    letter-spacing: 1.4px;
+}
+.p-datepicker table th span {
+    color: var(--orange);
+}
+.p-datepicker .p-component .p-ripple-disabled {
+    width: unset;
+}
+.p-datepicker:not(.p-datepicker-inline) .p-datepicker-header {
+    background-color: #2d2d2d;
+}
+
+.hours-sec {
+    display: flex;
+    width: 100%;
+}
+.hours-sec .halfHourElement {
+    height: 60px;
+    flex: 1 0 0;
+    background-color: rgb(67, 117, 67);
+}
+.halfHourElement.unavailable {
+    background-color: rgb(119, 46, 46);
+}
