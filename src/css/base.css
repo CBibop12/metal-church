@@ -3,7 +3,7 @@
     padding: 0;
     text-decoration: none;
     list-style-type: none;
-    color: white;
+    /* color: white; */
     user-select: none;
     box-sizing: border-box;
 }

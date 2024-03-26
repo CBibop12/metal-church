@@ -21,7 +21,11 @@ form {
     font-size: 24px;
     color: #707070;
 }
-
+.enterHoursBlock h5 {
+    font-family: var(--bebas);
+    font-size: 24px;
+    color: #707070;
+}
 .inputBlock input {
     width: 100%;
     height: 60px;
@@ -46,6 +50,7 @@ form {
     font-family: var(--bebas);
     transition: .2s;
     padding: 7px;
+    color: white;
 }
 .p-datepicker .p-datepicker-header .p-datepicker-title .p-datepicker-year:hover, .p-datepicker:hover .p-datepicker-header .p-datepicker-title .p-datepicker-month:hover {
     color: var(--orange);
@@ -53,15 +58,21 @@ form {
 .p-datepicker table td {
     padding: 12px;
     font-size: 22px;
+    color: white;
 }
 .p-datepicker table th {
     padding: 12px;
+    color: white;
     font-size: 24px;
     color: var(--orange);
     letter-spacing: 1.4px;
 }
 .p-datepicker table th span {
     color: var(--orange);
+}
+.p-datepicker-decade span {
+    color: white;
+    font-size: 24px;
 }
 .p-datepicker .p-component .p-ripple-disabled {
     width: unset;
@@ -73,12 +84,102 @@ form {
 .hours-sec {
     display: flex;
     width: 100%;
+    margin-bottom: 30px;
 }
 .hours-sec .halfHourElement {
     height: 60px;
     flex: 1 0 0;
-    background-color: rgb(67, 117, 67);
+    background-color: rgb(255, 255, 255);
+    border: 1px rgb(177, 177, 177) solid;
 }
 .halfHourElement.unavailable {
-    background-color: rgb(119, 46, 46);
+    background-color: rgb(99, 37, 37);
+    border: 1px rgb(68, 30, 30) solid;
+}
+.halfHourElement.picked {
+    background-color: var(--orange);
+    border: #68350c;
+}
+.halfHourElement.mid {
+    background-color: rgb(245 137 98);
+    border: #db7550 1px solid;
+}
+.halfHourElement.inactive {
+    background-color: rgb(126, 126, 126);
+    border: rgb(100, 100, 100) 1px solid;
+}
+.enterHour-dropdown {
+    height: 60px;
+    line-height: 60px;
+    width: 75px;
+}
+.enterHours-sec {
+    display: flex;
+    gap: 20px;
+}
+.enterHours-sec h2 {
+    color: white;
+    font-size: 28px;
+    font-family: var(--bebas);
+    line-height: 60px;
+}
+.material-symbols-outlined {
+    color: white;
+    font-size: 28px;
+    line-height: 91px;
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 24
+}
+.next-button-sec{
+    height: 60px;
+    width: 60px;
+    display: flex;
+    margin: auto 60px 0;
+    background-color: var(--orange);
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+.next-button-sec.reversed svg {
+    transform: rotate(180deg);
+}
+.next-button-sec.unavailable {
+    background-color: #412d1d;
+    cursor: not-allowed;
+}
+.next-button-sec svg {
+    fill: white;
+    height: 30px;
+    width: 30px;
+}
+.next-button-sec.unavailable svg {
+    fill: #686868;
+}
+.p-dropdown-label.p-inputtext {
+    padding-left: 15px;
+}
+.timeRange {
+    color: var(--orange);
+    font-family: var(--bebas);
+    font-size: 24px;
+    margin: -20px 0 20px;
+}
+.booking-submit {
+    height: 80px;
+    padding: 3px 40px 0;
+    line-height: 80px;
+    margin-top: 30px;
+    background-color: var(--orange);
+    color: white;
+    font-size: 28px;
+    border: none;
+    font-family: var(--bebas);
+}
+.booking-submit.disable {
+    background-color: #412d1d;
+    cursor: not-allowed;
+    color: #686868;
 }
