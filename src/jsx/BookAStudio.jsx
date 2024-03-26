@@ -166,7 +166,7 @@ const Booking = () => {
     async function findBookingByDate(date) {
         console.log(date);
         try {
-            const res = await fetch(`http://metalchurch.nl:5050/query/timeRange/${date}/${date}`);
+            const res = await fetch(`/query/timeRange/${date}/${date}`);
             const data = await res.json(); // Розпарсити відповідь
             console.log(`Bookings for ${date}: ${data}`);
             return data;
@@ -326,7 +326,7 @@ const Booking = () => {
         console.log('Sending data:', obj);
     
         try {
-            const response = await fetch('http://metalchurch.nl:5050/query/', {
+            const response = await fetch('/query', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
