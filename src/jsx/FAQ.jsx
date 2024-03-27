@@ -13,7 +13,14 @@ const FAQ = () => {
     const [accordion5Open, setAccordion5Open] = useState(false);
     const [accordion6Open, setAccordion6Open] = useState(false);
     const [accordion7Open, setAccordion7Open] = useState(false);
+    const [scrolled, setScrolled] = useState(false);
 
+    useEffect(() => {
+        if (!scrolled) {
+            window.scrollTo(0, 0);
+            setScrolled(true); // Update the state variable to indicate scrolling has been performed
+          }
+    }, [scrolled])
 
 
     const toggleAccordion = (accordionNumber) => {

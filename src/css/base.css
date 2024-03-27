@@ -77,6 +77,9 @@ header ul li a:hover {
     margin-bottom: 60px;
     margin-top: 60px;
 }
+.section-name.centered {
+    text-align: center;
+}
 .section-name span.orange {
     color: var(--orange);
 }

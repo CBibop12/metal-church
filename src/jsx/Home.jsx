@@ -6,6 +6,14 @@ import FooterComponent from './components/Footer';
 import "../css/home.css"
 
 const Home = () => {
+    const [scrolled, setScrolled] = useState(false);
+
+    useEffect(() => {
+        if (!scrolled) {
+            window.scrollTo(0, 0);
+            setScrolled(true); // Update the state variable to indicate scrolling has been performed
+          }
+    }, [scrolled])
 
     return (
         <>
