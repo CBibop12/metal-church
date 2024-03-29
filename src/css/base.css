@@ -117,7 +117,7 @@ footer {
     color: rgb(99, 99, 99);
     font-family: var(--roboto);
 }
-.search-id-input button {
+.search-button {
     height: 60px;
     line-height: 60px;
     background-color: var(--orange);
@@ -127,11 +127,15 @@ footer {
     transition: .2s;
     border: 2px solid var(--orange);
     width: 100px;
+    text-align: center;
 }
-.search-id-input button:hover {
-    background-color: white;
-    color: var(--orange);
+.search-button.disable {
+    background-color: #412d1d;
+    cursor: not-allowed;
+    border: 2px solid #412d1d;
+    color: #686868;
 }
+
 .search-id-input input:focus {
     outline: none;
 }

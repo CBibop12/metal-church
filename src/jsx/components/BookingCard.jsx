@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import copy from 'clipboard-copy';
 import ReactDOM from 'react-dom/client';
-const BookingCard = ({fullName, userEmail, phoneNumber, bookingId, bookingTime, timestamp}) => {
+const BookingCard = ({fullName, userEmail, phoneNumber, bookingId, bookingTime, fullDate}) => {
     const [originalFullName, setOriginalFullName] = useState(fullName)
     const [originalUserEmail, setOriginalUserEmail] = useState(userEmail)
     const [originalPhoneNumber, setOriginalPhoneNumber] = useState(phoneNumber)
@@ -69,9 +70,6 @@ const BookingCard = ({fullName, userEmail, phoneNumber, bookingId, bookingTime, 
                 fullName: newFullName,
                 email: newUserEmail,
                 phoneNumber: newPhoneNumber,
-                bookingTime: bookingTime,
-                timestamp: timestamp,
-                _id: bookingId
             };
             console.log('Sending data:', obj);
     
@@ -108,9 +106,16 @@ const BookingCard = ({fullName, userEmail, phoneNumber, bookingId, bookingTime, 
     }
     async function handleDeleteBooking() {
         try {
-            const res = await fetch(`/query/delete/${bookingId}`);
+            const response = await fetch(`/query/delete/${bookingId}`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({}) // Пустое тело запроса
+            });
+            
             // Проверяем успешность запроса
-            if (res.ok) {
+            if (response.ok) {
                 // Перенаправляем пользователя на главную страницу
                 window.location.href = '/';
             } else {
@@ -118,6 +123,7 @@ const BookingCard = ({fullName, userEmail, phoneNumber, bookingId, bookingTime, 
                 console.error('Failed to delete booking');
             }
         } catch (error) {
+            // Обработка ошибок при выполнении запроса
             console.error('Error while deleting booking:', error);
         }
     }
@@ -147,6 +153,14 @@ const BookingCard = ({fullName, userEmail, phoneNumber, bookingId, bookingTime, 
                                 </h3>
                                 {mode == 'edit' ? <input type="text" value={newPhoneNumber} onChange={(e) => setNewPhoneNumber(e.target.value)}/> : <h4>{originalPhoneNumber}</h4>}
                             </div> : ''}
+                            <div className="infoField">
+                                <h3>
+                                datum:
+                                </h3>
+                                <h4>
+                                    {fullDate}
+                                </h4>
+                            </div>
                             <div className="infoField">
                                 <h3>
                                 tijdsperiode:

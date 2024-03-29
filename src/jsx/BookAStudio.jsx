@@ -10,7 +10,6 @@ import 'primereact/resources/themes/saga-blue/theme.css'; // Choose your preferr
 import 'primereact/resources/primereact.min.css';
 import 'primeicons/primeicons.css';
 import QRCode from 'qrcode.react';
-import copy from 'clipboard-copy';
 import timeTable from '../js/timeTable';  
 import BookingCard from './components/BookingCard';
 
@@ -20,6 +19,7 @@ const Booking = () => {
     const [userEmail, setUserEmail] = useState("")
     const [phoneNumber, setPhoneNumber] = useState("")
     const [date, setDate] = useState(null);
+    const [originalDate, setOriginalDate] = useState()
     const [hourElements, setHourElements] = useState();
     const [rawAvailableHours, setRawAvailableHours] = useState([])
     const [availableHours, setAvailableHours] = useState([]);
@@ -270,10 +270,10 @@ const Booking = () => {
     }
     
 
-    const checkAvailable = async (originalValue, value) => {
+    const checkAvailable = async (originalValue) => {
         setQueryStringDate(dateForQueryFormat(originalValue))
         try {
-            const booking = await findBookingByDate(queryStringDate);
+            const booking = await findBookingByDate(dateForQueryFormat(originalValue));
             console.log(booking);
             const hourElements = document.querySelectorAll('.halfHourElement');
             // Сначала сбрасываем классы для всех элементов
@@ -312,13 +312,15 @@ const Booking = () => {
     };
     const handleDateChange = async (e) => {
         const formattedDate = formatDate(e.value);
-        setProgressStep(1)
-        setEnterHour(e.value)
-        setOriginalEnterPoint('')
-        setEnterPoint('')
-        setEnterHalfHour()
-        await checkAvailable(e.value, formattedDate);
+        setOriginalDate(formattedDate);
+        setProgressStep(1);
+        setEnterHour(e.value);
+        setOriginalEnterPoint('');
+        setEnterPoint('');
+        setEnterHalfHour();
+        await checkAvailable(e.value);
     };
+    
 
     function calculateTimeRange(enter, exit) {
         let timeDifference = exit - enter
@@ -477,9 +479,9 @@ const Booking = () => {
                 Uw boeking is succesvol aangemaakt! Bewaar uw BookingID, voor het geval u de boeking wilt annuleren of uw persoonlijke gegevens wilt wijzigen.
                 </p>
                 <div className="orderInfo-sec">
-                    <BookingCard fullName={`${firstName? firstName : "Name"} ${lastName? lastName : "Surname"}`} userEmail={userEmail} phoneNumber={phoneNumber} bookingTime={formatedDateString} bookingId={bookingId} timestamp={queryStringDate}></BookingCard>
+                    <BookingCard fullName={`${firstName? firstName : "Name"} ${lastName? lastName : "Surname"}`} userEmail={userEmail} phoneNumber={phoneNumber} bookingTime={formatedDateString} bookingId={bookingId} fullDate={originalDate}></BookingCard>
                     <div className="qrCode-container">
-                        <QRCode value={bookingId} size={330}></QRCode>
+                        <QRCode value={bookingId} size={380}></QRCode>
                     </div>
                 </div>
                 </>}

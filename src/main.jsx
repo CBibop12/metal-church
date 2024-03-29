@@ -5,6 +5,7 @@ import Home from './jsx/Home';
 import Contacts from './jsx/Contacts';
 import FAQ from './jsx/FAQ';
 import Booking from './jsx/BookAStudio';
+import SearchPage from './jsx/SearchPage';
 
 
 const App = () => {
@@ -25,6 +26,10 @@ const App = () => {
     {
       path: '/new-booking',
       element: <Booking></Booking>
+    },
+    {
+      path: '/search-booking/:bookingId',
+      element: <SearchPage></SearchPage>
     }
   ]);
 

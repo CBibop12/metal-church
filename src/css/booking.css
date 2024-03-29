@@ -209,7 +209,7 @@ form {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: 360px;
+    height: 406px;
 }
 .infoField {
     display: flex;
@@ -255,6 +255,8 @@ form {
 }
 .qrCode-container {
     padding: 13px;
+    max-height: 406px;
+    overflow: hidden;
     background-color: #fff;
 }
 .booking-button {
