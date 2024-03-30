@@ -16,6 +16,7 @@ body {
 .container {
     max-width: 1240px;
     margin: 0 auto;
+
 }
 @font-face {
     font-family: "Old London";
@@ -152,4 +153,51 @@ footer {
     color: #707070;
     font-weight: 300;
     font-size: 16px;
+}
+
+.main-burger-container {
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    z-index: 10;
+    display: flex;
+}
+.main-burger-container.disabled {
+    display: none;
+}
+.burger-empty-space {
+    flex: 1 0 0;
+}
+.burger-menu {
+    width: 300px;
+    background-color: #202020;
+    border-left: 1px solid var(--orange);
+    padding: 38px 15px 0 40px;
+}
+.closeBurger-sec {
+    display: flex;
+    justify-content: right;
+    width: 100%;
+}
+.burgerOpenButton {
+    display: none;
+    background-color: transparent;
+    border: none;
+}
+.burger-nav-list ul{
+    display: flex;
+    flex-direction: column;
+    padding-top: 60px;
+    gap: 30px;
+    text-align: left;
+}
+.burger-nav-list li a {
+    font-family: "Bebas Neue", sans-serif;
+    color: white;
+    font-size: 30px;
+    cursor: pointer;
+    transition: .2s;
+    border-bottom: 2px solid transparent;
 }

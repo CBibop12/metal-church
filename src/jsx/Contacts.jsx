@@ -5,7 +5,7 @@ import HeaderComponent from './components/Header';
 import FooterComponent from './components/Footer';
 import "../css/contacts.css"
 
-const Contacts = () => {
+const Contacts = ({burgerShown, showBurger}) => {
     const [scrolled, setScrolled] = useState(false);
 
     useEffect(() => {
@@ -17,7 +17,7 @@ const Contacts = () => {
 
     return (
         <>
-        <HeaderComponent></HeaderComponent>
+        <HeaderComponent burgerShown={burgerShown} showBurger={showBurger}></HeaderComponent>
         <div className="container top-section">
             <h2 className="section-name">
            <span className="orange"> Neem contact</span> met ons

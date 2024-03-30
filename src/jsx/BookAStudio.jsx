@@ -13,7 +13,7 @@ import QRCode from 'qrcode.react';
 import timeTable from '../js/timeTable';  
 import BookingCard from './components/BookingCard';
 
-const Booking = () => {
+const Booking = ({burgerShown, showBurger}) => {
     const [firstName, setFirstName] = useState()
     const [lastName, setLastName] = useState()
     const [userEmail, setUserEmail] = useState("")
@@ -377,7 +377,7 @@ const Booking = () => {
     
     return (
         <>
-        <HeaderComponent></HeaderComponent>
+        <HeaderComponent burgerShown={burgerShown} showBurger={showBurger}></HeaderComponent>
         <div className="container top-section">
             {bookingId.length == 0 ?
             <>
@@ -418,7 +418,7 @@ const Booking = () => {
                     {progressStep == 2 && (timeRange != '' || timeRange != '0 uur')? timeRange : ''} 
                     </h3> : ''}
                     {hourElements ?                 
-                        <div className='hours-sec'>
+                        <div className='hours-choosing-sec'>
                         <div className="enterHoursBlock">
                         <h5>Hoe laat wil je komen</h5>
                         <div className='enterHours-sec hidden'>

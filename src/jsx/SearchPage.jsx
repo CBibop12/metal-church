@@ -6,7 +6,7 @@ import FooterComponent from './components/Footer';
 import "../css/booking.css"
 import BookingCard from './components/BookingCard';
 
-const SearchPage = () => {
+const SearchPage = ({burgerShown, showBurger}) => {
     const { bookingId } = useParams();
     const [searchStatus, setSearchStatus] = useState(false);
     const [fullName, setFullName] = useState('');
@@ -45,7 +45,7 @@ const SearchPage = () => {
 
     return (
         <>
-            <HeaderComponent />
+            <HeaderComponent burgerShown={burgerShown} showBurger={showBurger}/>
             <div className="container top-section">
                 {searchStatus ?
                     <>

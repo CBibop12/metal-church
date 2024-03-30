@@ -1,0 +1,146 @@
+@media (max-width: 780px) {
+    header ul {
+        display: none;
+    }
+    .burgerOpenButton {
+        display: block;
+    }
+    .container {
+        width: 100%;
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+    .top-title-text {
+        width: 60%;
+    }
+    .top-title-sec h2 {
+        font-size: 48px;
+    }
+    .section-name {
+        font-size: 48px;
+        margin: 32px 0;
+    }
+    .about-us-sec {
+        display: block;
+        padding: 15px;
+        border: 1px solid grey;
+
+    }
+    .about-us-poster {
+        display: none;
+    }
+    footer  {
+        margin-top: 60px;
+    }
+    .footer-content {
+        display: block;
+        margin-bottom: 80px;
+    }
+    .search-for-id-sec {
+        margin-top: 50px;
+        width: 100%;
+    }
+    .under-footer {
+        margin-bottom: 15px;
+        font-size: 20px;
+    }
+    .title-p, .title-p.centered  {
+        font-size: 34px;
+        color: rgb(75, 75, 75);
+        text-align: left;
+    }
+    form {
+        width: 100%;
+    }
+    .accordionItem-cover {
+        height: unset;
+        line-height: unset;
+        font-size: 36px;
+    }
+    .accordion-item p {
+        font-size: 24px;
+    }
+    .contactUs-text-side {
+        width: 100%;
+    }
+    .orderInfo-sec {
+        flex-direction: column;
+    }
+    .qrCode-container {
+        width: 406px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .infoField input {
+        width: 350px;
+    }
+}
+@media (max-width: 475px) {
+    .logo {
+        font-size: 45px;
+    }
+    .burger-menu {
+        padding-top: 20px;
+    }
+    .top-title-sec {
+        padding-top: 92px;
+    }
+    .book-link{
+        width: 100%;
+    }
+    .top-title-text {
+        width: 100%;
+        padding: 15px;
+    }
+    .top-title-sec h2 {
+        margin-bottom: 40px;
+    }
+    .img-overlay {
+        padding: 15px;
+    }
+    .why-choose-us-sec {
+        flex-direction: column;
+    }
+    .section-name {
+        text-align: center;
+        font-size: 38px;
+    }
+    .under-footer {
+        font-size: 16px;
+    }
+    .contactUsItem h4 {
+        font-size: 20px;
+    }
+    .contactUsItem p {
+        font-size: 25px;
+    }
+    .hours-choosing-sec {
+        flex-direction: column;
+        gap: 20px;
+    }
+    .next-button-sec {
+        margin-left: 0;
+    }
+    .next-button-sec svg {
+        transform: rotate(90deg);
+    }
+    .next-button-sec.reversed svg {
+        transform: rotate(-90deg);
+    }
+    .orderCard-content {
+        padding: 15px 15px 1px;
+    }
+    .buttons-line {
+        width: 100%;
+    }
+    .infoField input {
+        width: unset;
+        flex: 1 0 0;
+    }
+    .orangeLine {
+        width: 6px;
+    }
+    .infoField h3, .infoField input, .infoField h4 {
+        font-size: 22px;
+    }
+}

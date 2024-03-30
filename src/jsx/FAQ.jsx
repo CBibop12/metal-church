@@ -5,7 +5,7 @@ import chevronDown from "../assets/img/chevron-down.svg"
 import HeaderComponent from './components/Header';
 import FooterComponent from './components/Footer';
 
-const FAQ = () => {
+const FAQ = ({burgerShown, showBurger}) => {
     const [accordion1Open, setAccordion1Open] = useState(false);
     const [accordion2Open, setAccordion2Open] = useState(false);
     const [accordion3Open, setAccordion3Open] = useState(false);
@@ -53,7 +53,7 @@ const FAQ = () => {
 
     return (
         <>
-          <HeaderComponent />
+          <HeaderComponent burgerShown={burgerShown} showBurger={showBurger}/>
           <div className="container top-section">
             <h2 className="section-name">
               <span className='orange'>FAQ</span>

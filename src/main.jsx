@@ -6,30 +6,54 @@ import Contacts from './jsx/Contacts';
 import FAQ from './jsx/FAQ';
 import Booking from './jsx/BookAStudio';
 import SearchPage from './jsx/SearchPage';
+import BurgerMenu from './jsx/components/BurgerManu';
+import './css/mediaRequests.css'
 
 
 const App = () => {
+  const [burgerShown, showBurger] = useState(false)
+
 
   const router = createBrowserRouter([
     {
       path: '/',
-      element: <Home/>
+      element: 
+      <>
+      <BurgerMenu burgerShown={burgerShown} showBurger={showBurger}/>
+      <Home burgerShown={burgerShown} showBurger={showBurger}/>
+      </>
     },
     {
       path: '/contacts',
-      element: <Contacts/>
+      element: 
+      <>
+      <BurgerMenu burgerShown={burgerShown} showBurger={showBurger}/>
+      <Contacts burgerShown={burgerShown} showBurger={showBurger} />
+      </>
     },
     {
       path: '/FAQ',
-      element: <FAQ/>
+      element: 
+      <>
+      <BurgerMenu burgerShown={burgerShown} showBurger={showBurger}/>
+      <FAQ burgerShown={burgerShown} showBurger={showBurger}/>
+      </>
     },
     {
       path: '/new-booking',
-      element: <Booking></Booking>
+      element: 
+      <>
+      <BurgerMenu burgerShown={burgerShown} showBurger={showBurger}/>
+      <Booking burgerShown={burgerShown} showBurger={showBurger}/>
+      </>
     },
     {
       path: '/search-booking/:bookingId',
-      element: <SearchPage></SearchPage>
+      element: 
+      <>
+      <BurgerMenu burgerShown={burgerShown} showBurger={showBurger}/>
+      <SearchPage burgerShown={burgerShown} showBurger={showBurger}/>
+      </>
     }
   ]);
 

@@ -5,7 +5,7 @@ import HeaderComponent from './components/Header';
 import FooterComponent from './components/Footer';
 import "../css/home.css"
 
-const Home = () => {
+const Home = ({burgerShown, showBurger}) => {
     const [scrolled, setScrolled] = useState(false);
 
     useEffect(() => {
@@ -17,7 +17,7 @@ const Home = () => {
 
     return (
         <>
-        <HeaderComponent></HeaderComponent>
+        <HeaderComponent burgerShown={burgerShown} showBurger={showBurger}></HeaderComponent>
         <div className="container">
         <div className="top-title-sec">
             <div className="top-title-img">
