@@ -76,6 +76,9 @@
     }
 }
 @media (max-width: 475px) {
+    .title-p, .title-p.centered {
+        text-align: center;
+    }
     .logo {
         font-size: 45px;
     }
@@ -87,6 +90,7 @@
     }
     .book-link{
         width: 100%;
+        margin-top: 20px;
     }
     .top-title-text {
         width: 100%;
@@ -94,6 +98,10 @@
     }
     .top-title-sec h2 {
         margin-bottom: 40px;
+    }
+    .top-title-img {
+        width: unset;
+        height: 500px;
     }
     .img-overlay {
         padding: 15px;
@@ -142,5 +150,23 @@
     }
     .infoField h3, .infoField input, .infoField h4 {
         font-size: 22px;
+    }
+    .p-datepicker table td, .p-datepicker table th {
+       padding: 0;
+    }
+    /* .p-datepicker table td {
+        display: inline-flex;
+    } */
+    .p-datepicker.p-component.p-ripple-disabled.p-connected-overlay-enter-done {
+        margin-left:15px
+    }
+    .p-datepicker table td span{
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+@media (max-width: 375px) {
+    .logo {
+        font-size: 36px;
     }
 }
