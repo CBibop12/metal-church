@@ -97,17 +97,22 @@ form {
     background-color: rgb(255, 255, 255);
     border: 1px rgb(177, 177, 177) solid;
 }
+
 .halfHourElement.unavailable {
     background-color: rgb(99, 37, 37);
     border: 1px rgb(68, 30, 30) solid;
 }
+.halfHourElement.busy {
+    background-color: #ec822b;
+    border: #c56423 1px solid;
+}
 .halfHourElement.picked {
     background-color: var(--orange);
-    border: #68350c;
+    border: #c56423 1px solid;
 }
 .halfHourElement.mid {
     background-color: rgb(245 137 98);
-    border: #db7550 1px solid;
+    border: #c56423 1px solid;
 }
 .halfHourElement.inactive {
     background-color: rgb(126, 126, 126);

@@ -8,11 +8,12 @@ import Booking from './jsx/BookAStudio';
 import SearchPage from './jsx/SearchPage';
 import BurgerMenu from './jsx/components/BurgerManu';
 import './css/mediaRequests.css'
+import AdminPanel from './jsx/Admin';
 
 
 const App = () => {
   const [burgerShown, showBurger] = useState(false)
-
+  const [adminPassword, setAdminPassword] = useState('')
 
   const router = createBrowserRouter([
     {
@@ -53,6 +54,14 @@ const App = () => {
       <>
       <BurgerMenu burgerShown={burgerShown} showBurger={showBurger}/>
       <SearchPage burgerShown={burgerShown} showBurger={showBurger}/>
+      </>
+    },
+    {
+      path: '/admin',
+      element:
+      <>
+      <BurgerMenu burgerShown={burgerShown} showBurger={showBurger}/>
+      <AdminPanel burgerShown={burgerShown} showBurger={showBurger} adminPassword={adminPassword} setAdminPassword={setAdminPassword}/>
       </>
     }
   ]);
