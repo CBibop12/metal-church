@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react';
 import HeaderComponent from './components/Header';
 import FooterComponent from './components/Footer';
 import '../css/admin.css';
-import visibility from '../assets/img/visibility.svg';
-import visibilityOff from '../assets/img/visibilityOff.svg';
+import visibility from '/assets/img/visibility.svg';
+import visibilityOff from '/assets/img/visibilityOff.svg';
 import SHA256 from 'crypto-js/sha256';
 import DayBlock from './components/DayBookingBlock';
 

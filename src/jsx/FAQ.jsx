@@ -1,7 +1,7 @@
 import React, { useState, useEffect} from 'react';
 import "../css/base.css";
 import "../css/FAQ.css";
-import chevronDown from "../assets/img/chevron-down.svg"
+import chevronDown from "/assets/img/chevron-down.svg"
 import HeaderComponent from './components/Header';
 import FooterComponent from './components/Footer';
 

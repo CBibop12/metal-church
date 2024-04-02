@@ -22,7 +22,7 @@ const Home = ({burgerShown, showBurger}) => {
         <div className="top-title-sec">
             <div className="top-title-img">
                 <div className="img-overlay"></div>
-                <img src="../src/assets/img/top-title-img.jpg" alt="" />
+                <img src="/assets/img/top-title-img.jpg" alt="" />
                 <div className="top-title-text">
                 <h2>
                   Jouw muziek, onze ruimte - een <span>perfecte symfonie</span>.
@@ -37,7 +37,7 @@ const Home = ({burgerShown, showBurger}) => {
         <div className="why-choose-us-sec">
             <div className="why-us-item">
                     <div className="why-us-img">
-                        <img src="../src/assets/img/music-icon.svg" alt="" />
+                        <img src="/assets/img/music-icon.svg" alt="" />
                     </div>
                     <h4>
                     Diversiteit
@@ -48,7 +48,7 @@ const Home = ({burgerShown, showBurger}) => {
             </div>
             <div className="why-us-item">
                     <div className="why-us-img">
-                        <img src="../src/assets/img/headphones.svg" alt="" />
+                        <img src="/assets/img/headphones.svg" alt="" />
                     </div>
                     <h4>
                     Gemak
@@ -59,7 +59,7 @@ const Home = ({burgerShown, showBurger}) => {
                 </div>
                 <div className="why-us-item">
                     <div className="why-us-img">
-                        <img src="../src/assets/img/free-icon.svg" alt="" />
+                        <img src="/assets/img/free-icon.svg" alt="" />
                     </div>
                     <h4>
                     Prijs
@@ -85,7 +85,7 @@ const Home = ({burgerShown, showBurger}) => {
             </p>
             <div className="about-us-poster">
                 <div className="img-overlay"></div>
-                <img src="../src/assets/img/about-us-poster.jpg" alt="" />
+                <img src="/assets/img/about-us-poster.jpg" alt="" />
             </div>
         </div>
         </div>
