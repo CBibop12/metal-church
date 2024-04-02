@@ -479,7 +479,7 @@ const Booking = ({burgerShown, showBurger}) => {
                 Uw boeking is succesvol aangemaakt! Bewaar uw BookingID, voor het geval u de boeking wilt annuleren of uw persoonlijke gegevens wilt wijzigen.
                 </p>
                 <div className="orderInfo-sec">
-                    <BookingCard fullName={`${firstName? firstName : "Name"} ${lastName? lastName : "Surname"}`} userEmail={userEmail} phoneNumber={phoneNumber} bookingTime={formatedDateString} bookingId={bookingId} fullDate={originalDate}></BookingCard>
+                    <BookingCard fullName={`${firstName? firstName : "Name"} ${lastName? lastName : "Surname"}`} userEmail={userEmail} phoneNumber={phoneNumber} bookingTime={formatedDateString} bookingId={bookingId} fullDate={originalDate} deleteMode="user"></BookingCard>
                     <div className="qrCode-container">
                         <QRCode value={bookingId} size={380}></QRCode>
                     </div>

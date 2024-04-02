@@ -93,7 +93,7 @@
     width: 193px;
     outline: none;
 }
-.searchDate-button {
+.searchDate-button, .go-back-button  {
 height: 60px;
 border: 2px solid var(--orange);
 background-color: var(--orange);
@@ -106,13 +106,30 @@ padding: 0 20px;
 cursor: pointer;
 transition: .2s;
 }
+.go-back-button span {
+    padding-top: 5px;
+    display: inline-flex;
+    align-items: center;
+}
+
+.go-back-button span svg {
+    transform: rotate(180deg);
+    padding-bottom: 5px;
+    fill: white;
+    transition: .2s;
+}
+
+.go-back-button:hover svg {
+    fill: var(--orange);
+}
+
 .searchDate-button.disable {
     background-color: #412d1d;
     cursor: not-allowed;
     color: #686868;
     border: #412d1d 2px solid;
 }
-.searchDate-button:hover {
+.searchDate-button:hover, .go-back-button:hover {
     color: var(--orange);
     background-color: #fff;
 }
@@ -140,7 +157,9 @@ transition: .2s;
 .dayControlButtons {
     display: flex;
     gap: 20px;
-    margin-bottom: 50px;
+}
+.bookingsList {
+    margin-top: 50px;
 }
 .exploreButton, .deleteAllButton {
     height: 80px;

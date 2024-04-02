@@ -7,9 +7,8 @@ import FAQ from './jsx/FAQ';
 import Booking from './jsx/BookAStudio';
 import SearchPage from './jsx/SearchPage';
 import BurgerMenu from './jsx/components/BurgerManu';
-import './css/mediaRequests.css'
 import AdminPanel from './jsx/Admin';
-
+import './css/mediaRequests.css'
 
 const App = () => {
   const [burgerShown, showBurger] = useState(false)

@@ -53,7 +53,7 @@ const SearchPage = ({burgerShown, showBurger}) => {
                             We hebben een boeking gevonden met ingevoegd BoekingID
                         </h2>
                         <div className="orderInfo-sec">
-                            <BookingCard fullName={fullName} userEmail={userEmail} phoneNumber={phoneNumber} bookingTime={bookingTime} bookingId={bookingId} fullDate={fullDate} />
+                            <BookingCard deleteMode="user" fullName={fullName} userEmail={userEmail} phoneNumber={phoneNumber} bookingTime={bookingTime} bookingId={bookingId} fullDate={fullDate} />
                         </div>
                     </>
                     :

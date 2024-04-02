@@ -52,79 +52,80 @@ const FAQ = ({burgerShown, showBurger}) => {
     };
 
     return (
-        <>
-          <HeaderComponent burgerShown={burgerShown} showBurger={showBurger}/>
-          <div className="container top-section">
-            <h2 className="section-name">
-              <span className='orange'>FAQ</span>
-            </h2>
-            <div className="accordion-section">
-              <div className="accordion-item" onClick={() => toggleAccordion(1)}>
-                <div className='accordionItem-cover'>
-                 How do I book a session at the music recording studio? <span className={accordion1Open ? "open" : ''}><img src={chevronDown} alt="" /></span>
-                </div>
-                <p className={accordion1Open ? "shown" : ""}>
-                 Booking a session is easy! Simply visit our website and navigate to the booking page. Select your desired date and time, provide your contact information, and confirm your booking. It's that simple!
-                </p>
-              </div>
-      
-              <div className="accordion-item" onClick={() => toggleAccordion(2)}>
-                <div className='accordionItem-cover'>
-                 Can I use the studio for free? <span className={accordion2Open ? "open" : ''}><img src={chevronDown} alt="" /></span>
-                </div>
-                <p className={accordion2Open ? "shown" : ""}>
-                 Yes, you can use the studio for free as long as you book a session in advance. We offer complimentary bookings, allowing you to unleash your creativity without any cost.
-                </p>
-              </div>
-      
-              <div className="accordion-item" onClick={() => toggleAccordion(3)}>
-                <div className='accordionItem-cover'>
-                 What happens if I don't show up for my booked session? <span className={accordion3Open ? "open" : ''}><img src={chevronDown} alt="" /></span>
-                </div>
-                <p className={accordion3Open ? "shown" : ""}>
-                  If you miss your booked session without canceling in advance, a 25 euros fine will be applied. We encourage you to be mindful of your booking to avoid any inconvenience.
-                </p>
-              </div>
-      
-              <div className="accordion-item" onClick={() => toggleAccordion(4)}>
-                <div className='accordionItem-cover'>
-                 Are there any penalties for canceling a session? <span className={accordion4Open ? "open" : ''}><img src={chevronDown} alt="" /></span>
-                </div>
-                <p className={accordion4Open ? "shown" : ""}>
-                  You can cancel your session free of charge up to 24 hours before the scheduled time. However, late cancellations or no-shows may result in a 25 euros fine.
-                </p>
-              </div>
-      
-              <div className="accordion-item" onClick={() => toggleAccordion(5)}>
-                <div className='accordionItem-cover'>
-                 What musical instruments and equipment are available in the studio? <span className={accordion5Open ? "open" : ''}><img src={chevronDown} alt="" /></span>
-                </div>
-                <p className={accordion5Open ? "shown" : ""}>
-                 Our studio provides a diverse range of musical instruments, including keyboards, guitars, drums, and more. We also offer professional software for music production to enhance your creative process.
-                </p>
-              </div>
-      
-              <div className="accordion-item" onClick={() => toggleAccordion(6)}>
-                <div className='accordionItem-cover'>
-                 How long can I use the studio for during a booking? <span className={accordion6Open ? "open" : ''}><img src={chevronDown} alt="" /></span>
-                </div>
-                <p className={accordion6Open ? "shown" : ""}>
-                 You can use the studio for as long as you want during your booked session. Enjoy an uninterrupted creative experience without worrying about time constraints.
-                </p>
-              </div>
-      
-              <div className="accordion-item" onClick={() => toggleAccordion(7)}>
-                <div className='accordionItem-cover'>
-                  Can I bring my own instruments and equipment? <span className={accordion7Open ? "open" : ''}><img src={chevronDown} alt="" /></span>
-                </div>
-                <p className={accordion7Open ? "shown" : ""}>
-                 Absolutely! Feel free to bring your own instruments and equipment to personalize your recording session. Our studio is designed to accommodate your creative preferences.
-                </p>
-              </div>
-            </div>
-          </div>
-          <FooterComponent />
-        </>
+<>
+  <HeaderComponent burgerShown={burgerShown} showBurger={showBurger}/>
+  <div className="container top-section">
+    <h2 className="section-name">
+      <span className='orange'>FAQ</span>
+    </h2>
+    <div className="accordion-section">
+      <div className="accordion-item" onClick={() => toggleAccordion(1)}>
+        <div className='accordionItem-cover'>
+          Hoe boek ik een sessie in de muziekstudio voor opname? <span className={accordion1Open ? "open" : ''}><img src={chevronDown} alt="" /></span>
+        </div>
+        <p className={accordion1Open ? "shown" : ""}>
+          Het boeken van een sessie is eenvoudig! Ga gewoon naar onze website en ga naar de boekingspagina. Selecteer de gewenste datum en tijd, verstrek uw contactgegevens en bevestig uw boeking. Zo simpel is het!
+        </p>
+      </div>
+
+      <div className="accordion-item" onClick={() => toggleAccordion(2)}>
+        <div className='accordionItem-cover'>
+          Kan ik de studio gratis gebruiken? <span className={accordion2Open ? "open" : ''}><img src={chevronDown} alt="" /></span>
+        </div>
+        <p className={accordion2Open ? "shown" : ""}>
+          Ja, je kunt de studio gratis gebruiken, zolang je maar van tevoren een sessie boekt. We bieden gratis boekingen aan, zodat je je creativiteit kunt ontketenen zonder enige kosten.
+        </p>
+      </div>
+
+      <div className="accordion-item" onClick={() => toggleAccordion(3)}>
+        <div className='accordionItem-cover'>
+          Wat gebeurt er als ik niet verschijn voor mijn geboekte sessie? <span className={accordion3Open ? "open" : ''}><img src={chevronDown} alt="" /></span>
+        </div>
+        <p className={accordion3Open ? "shown" : ""}>
+          Als je je geboekte sessie mist zonder vooraf te annuleren, wordt er een boete van 25 euro in rekening gebracht. We moedigen je aan om op tijd te zijn voor je boeking om eventuele ongemakken te voorkomen.
+        </p>
+      </div>
+
+      <div className="accordion-item" onClick={() => toggleAccordion(4)}>
+        <div className='accordionItem-cover'>
+          Zijn er boetes voor het annuleren van een sessie? <span className={accordion4Open ? "open" : ''}><img src={chevronDown} alt="" /></span>
+        </div>
+        <p className={accordion4Open ? "shown" : ""}>
+          Je kunt je sessie gratis annuleren tot 24 uur voor de geplande tijd. Late annuleringen of het niet komen opdagen kunnen echter resulteren in een boete van 25 euro.
+        </p>
+      </div>
+
+      <div className="accordion-item" onClick={() => toggleAccordion(5)}>
+        <div className='accordionItem-cover'>
+          Welke muziekinstrumenten en apparatuur zijn beschikbaar in de studio? <span className={accordion5Open ? "open" : ''}><img src={chevronDown} alt="" /></span>
+        </div>
+        <p className={accordion5Open ? "shown" : ""}>
+          Onze studio biedt een diverse reeks muziekinstrumenten, waaronder toetsenborden, gitaren, drums en meer. We bieden ook professionele software voor muziekproductie om je creatieve proces te verbeteren.
+        </p>
+      </div>
+
+      <div className="accordion-item" onClick={() => toggleAccordion(6)}>
+        <div className='accordionItem-cover'>
+          Hoe lang kan ik de studio gebruiken tijdens een boeking? <span className={accordion6Open ? "open" : ''}><img src={chevronDown} alt="" /></span>
+        </div>
+        <p className={accordion6Open ? "shown" : ""}>
+          Je kunt de studio gebruiken voor zo lang als je wilt tijdens je geboekte sessie. Geniet van een ononderbroken creatieve ervaring zonder je zorgen te maken over tijdslimieten.
+        </p>
+      </div>
+
+      <div className="accordion-item" onClick={() => toggleAccordion(7)}>
+        <div className='accordionItem-cover'>
+          Kan ik mijn eigen instrumenten en apparatuur meenemen? <span className={accordion7Open ? "open" : ''}><img src={chevronDown} alt="" /></span>
+        </div>
+        <p className={accordion7Open ? "shown" : ""}>
+          Absoluut! Voel je vrij om je eigen instrumenten en apparatuur mee te nemen om je opnamesessie te personaliseren. Onze studio is ontworpen om aan je creatieve voorkeuren te voldoen.
+        </p>
+      </div>
+    </div>
+  </div>
+  <FooterComponent />
+</>
+
       );
 }
 

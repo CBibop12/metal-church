@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import copy from 'clipboard-copy';
 import ReactDOM from 'react-dom/client';
-const BookingCard = ({fullName, userEmail, phoneNumber, bookingId, bookingTime, fullDate}) => {
+const BookingCard = ({fullName, userEmail, phoneNumber, bookingId, bookingTime, fullDate, deleteMode}) => {
     const [originalFullName, setOriginalFullName] = useState(fullName)
     const [originalUserEmail, setOriginalUserEmail] = useState(userEmail)
     const [originalPhoneNumber, setOriginalPhoneNumber] = useState(phoneNumber)
@@ -117,7 +117,11 @@ const BookingCard = ({fullName, userEmail, phoneNumber, bookingId, bookingTime, 
             // Проверяем успешность запроса
             if (response.ok) {
                 // Перенаправляем пользователя на главную страницу
-                window.location.href = '/';
+                if (deleteMode === 'admin') {
+                    window.location.reload()
+                } else {
+                    window.location.href = '/';
+                }
             } else {
                 // Обрабатываем ошибку, если запрос не удался
                 console.error('Failed to delete booking');

@@ -4,13 +4,18 @@ const HoursLine = ({ excludedHours }) => {
     const [hoursSec, setHoursSec] = useState([]);
 
     useEffect(() => {
-        generateHalfHours();
+        if (excludedHours) {
+            generateHalfHours(excludedHours);
+        }
+        else {
+            generateHalfHours([])
+        }
     }, [excludedHours]);
 
-    const generateHalfHours = () => {
+    const generateHalfHours = (excludedHourss) => {
         const elements = [];
         for (let i = 0; i < 48; i++) {
-            const isExcluded = excludedHours.includes(i);
+            const isExcluded = excludedHourss.includes(i);
             elements.push(
                 <div key={i} className={isExcluded ? 'halfHourElement busy' : 'halfHourElement'} />
             );

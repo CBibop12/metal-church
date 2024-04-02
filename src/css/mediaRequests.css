@@ -76,6 +76,9 @@
     }
 }
 @media (max-width: 475px) {
+    .full-name-sec {
+        gap: 20px
+    }
     .title-p, .title-p.centered {
         text-align: center;
     }
@@ -136,10 +139,7 @@
         transform: rotate(-90deg);
     }
     .orderCard-content {
-        padding: 15px 15px 1px;
-    }
-    .buttons-line {
-        width: 100%;
+        padding: 10px 10px 1px;
     }
     .infoField input {
         width: unset;
@@ -149,7 +149,7 @@
         width: 6px;
     }
     .infoField h3, .infoField input, .infoField h4 {
-        font-size: 22px;
+        font-size: 18px;
     }
     .p-datepicker table td, .p-datepicker table th {
        padding: 0;
@@ -164,9 +164,44 @@
         margin-left: auto;
         margin-right: auto;
     }
+    .top-admin-title {
+        flex-direction: column;
+        text-align: center;
+    }
+    .searchDate-input input {
+        flex: 1 0 0;
+    }
+    .edit-button h5 span {
+        display: none;
+    }
+    .idCopy-button svg {
+        width: 15px;
+        height: 15px;
+        margin-left: 0;
+    }
+    .buttons-line {
+        padding-bottom: 10px;
+        width: 100%;
+    }
 }
 @media (max-width: 375px) {
+    .dayBookingsBlock {
+        padding: 10px;
+    }
+    .infoField h3, .infoField input, .infoField h4 {
+        font-size: 15px;
+    }
+    .booking-button {
+        font-size: 20px;
+        padding: unset;
+    }
     .logo {
         font-size: 36px;
+    }
+    .fullSearchName {
+        display: none;
+    }
+    .orderCard-content {
+        height: 350px;
     }
 }
