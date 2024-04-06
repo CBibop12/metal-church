@@ -183,6 +183,27 @@
         padding-bottom: 10px;
         width: 100%;
     }
+    .password-input {
+        width: 100%;
+        margin-left: 15px;
+        margin-right: 15px;
+    }
+    .visibilityButton {
+        right: 30px;
+    }
+    .passInput-block {
+        width: 100%;
+        display: flex;
+    }
+    .entrance-block {
+        margin-left: 15px;
+        margin-right: 15px;
+        padding: 0;
+    }
+    .entrance-block h2 {
+        margin-top: 15px;
+        font-size: 36px;
+    }
 }
 @media (max-width: 375px) {
     .dayBookingsBlock {
