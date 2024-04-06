@@ -78,10 +78,6 @@ const Home = ({burgerShown, showBurger}) => {
         <div className="about-us-sec">
             <p>
             Welkom bij Metal Church, een unieke muziekopnamestudio in het hart van Maurik, Nederland. Wij geloven in het bevorderen van creativiteit en het bieden van kansen aan aspirant-muzikanten om hun dromen waar te maken. Wat ons onderscheidt? De mogelijkheid om onze studioruimte gratis te huren.
-            <br/><br/>
-            Ons verhaal gaat niet alleen over geluidsdichte muren en hoogwaardige apparatuur; het gaat over passie, veerkracht en het besef dat iedereen recht heeft op een kans om zijn stempel te drukken op de wereld van muziek. Achter dit initiatief schuilt een bitterzoet verhaal - de studio is opgericht ter nagedachtenis aan een getalenteerde muzikant die ons te vroeg heeft verlaten. Ter ere van hen hebben we besloten onze deuren te openen zonder de financiële last, zodat kunstenaars toegang hebben tot een professionele opnameomgeving zonder zich zorgen te maken over de kosten.
-            <br/><br/>
-            Metal Church is meer dan alleen een studio; het is een toevluchtsoord voor degenen die tegenslagen hebben gehad, een plek waar de echo's van verdriet kunnen worden omgezet in melodieën van hoop. We geloven dat iedereen de kans moet krijgen om zijn stem te laten horen en zijn emoties te uiten via muziek, ongeacht financiële beperkingen.
             </p>
             <div className="about-us-poster">
                 <div className="img-overlay"></div>

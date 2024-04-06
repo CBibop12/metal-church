@@ -12,6 +12,10 @@ import 'primeicons/primeicons.css';
 import QRCode from 'qrcode.react';
 import timeTable from '../js/timeTable';  
 import BookingCard from './components/BookingCard';
+import visibility from '/assets/img/visibility.svg';
+import visibilityOff from '/assets/img/visibilityOff.svg';
+import SHA256 from 'crypto-js/sha256';
+import requiredPassword from '../js/userPassword';
 
 const Booking = ({burgerShown, showBurger}) => {
     const [firstName, setFirstName] = useState()
@@ -41,6 +45,10 @@ const Booking = ({burgerShown, showBurger}) => {
     const [formatedDateString, setFormatedDateString] = useState()
     const [queryStringDate, setQueryStringDate] = useState()
     const [scrolled, setScrolled] = useState(false);
+    const [isButtonAvailable, setIsButtonAvailable] = useState(false);
+    const [userPassword, setUserPassword] = useState('');
+    const [passwordShown, showThePassword] = useState(false);
+    const [isAllowed, setIsAllowed] = useState(false);
 
     useEffect(() => {
         if (!scrolled) {
@@ -48,6 +56,40 @@ const Booking = ({burgerShown, showBurger}) => {
             setScrolled(true); // Update the state variable to indicate scrolling has been performed
           }
     }, [scrolled])
+
+    useEffect(() => {
+        setIsButtonAvailable(userPassword.length >= 3);
+    }, [userPassword]);
+
+    const handlePaste = (e) => {
+        const pastedText = e.clipboardData.getData('text');
+        setUserPassword(prevValue => prevValue + pastedText);
+        setUserPassword(userPassword.substring(0, userPassword.length - pastedText.length));
+    };
+
+    const handleLogin = () => {
+        // Хэшируем введенный пароль и сравниваем с захэшированным администраторским паролем
+        const hashedInputPassword = SHA256(userPassword).toString();
+        if (hashedInputPassword === requiredPassword) {
+            setIsAllowed(true);
+            localStorage.setItem('userPassword', userPassword)
+        } else {
+            console.log(userPassword, "is wrong password");
+            setIsAllowed(false);
+            setUserPassword(''); // Очищаем поле ввода пароля
+        }
+    };
+
+    useEffect(() => {
+        const storedUserPassword = localStorage.getItem('userPassword');
+        if (storedUserPassword) {
+            console.log("We took your password from localStorage");
+            const hashedStoredUserPassword = SHA256(storedUserPassword).toString();
+            if (hashedStoredUserPassword === requiredPassword) {
+                setIsAllowed(true);
+            }
+        }
+    }, []);
 
     const renderHalfHourElements = (availableHoursList) => {
         if (hourElements) { // Проверяем, были ли элементы уже созданы
@@ -377,118 +419,141 @@ const Booking = ({burgerShown, showBurger}) => {
     
     return (
         <>
-        <HeaderComponent burgerShown={burgerShown} showBurger={showBurger}></HeaderComponent>
-        <div className="container top-section">
-            {bookingId.length == 0 ?
+        {!isAllowed ?
             <>
-            <h2 className="section-name">
-            Maak samen met ons uw <span className="orange">meesterwerk</span>
-            </h2>
-            <p className="title-p">
-            vul dit eenvoudige formulier in om een gratis boeking te maken
-            </p>
-                    <form>
-                    <div className='full-name-sec'>
-                        <div className="inputBlock">
-                            <h5 className='form-input-title'>Voornaam</h5>
-                            <input type="text" placeholder='Vul uw voornaam in' value={firstName} onChange={(e) => setFirstName(e.target.value)}/>
-                        </div> 
-                        <div className="inputBlock">
-                            <h5 className='form-input-title'>Achternaam</h5>
-                            <input type="text" placeholder='Vul uw achternaam in' value={lastName} onChange={(e) => setLastName(e.target.value)}/>
-                        </div> 
-                    </div>
-                    <div className="inputBlock">
-                        <h5>Email</h5>
-                        <input type="email" placeholder='Vul uw email in' value={userEmail} onChange={(e) => setUserEmail(e.target.value)}/>
-                    </div>
-                    <div className="inputBlock">
-                        <h5>Telefoon</h5>
-                        <input type="tel" placeholder='Vul uw telefoonnummer in' value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)}/>
-                    </div>
-                    <div className="inputBlock">
-                        <h5>Welke dag wil je komen</h5>
-                        <Calendar value={date} onChange={handleDateChange} dateFormat="dd.mm.yy" readOnlyInput/>
-                    </div>
-                    <div className='hours-sec'>
-                        {hourElements}
-                    </div>
-                    {typeof enterPoint == 'number' && typeof exitPoint == 'number' && exitPoint - enterPoint >= 1? 
-                    <h3 className="timeRange">
-                    {progressStep == 2 && (timeRange != '' || timeRange != '0 uur')? timeRange : ''} 
-                    </h3> : ''}
-                    {hourElements ?                 
-                        <div className='hours-choosing-sec'>
-                        <div className="enterHoursBlock">
-                        <h5>Hoe laat wil je komen</h5>
-                        <div className='enterHours-sec hidden'>
-                        <Dropdown disabled={progressStep == 1? false : true} defaultValue={"00"} value={enterHour} onChange={(e) => {
-                        setEnterHour(e.value)
-                        setOriginalEnterPoint(e.value.code)
-                        setEnterPoint(e.value.code)
-                        setEnterHalfHour({name: "00", code: 0})
-                        }} options={hoursListToShow} optionLabel="name" className="enterHour-dropdown" checkmark={true}  highlightOnSelect={false} />
-                        <h2>:</h2>
-                        <Dropdown disabled={progressStep == 1? false : true} value={enterHalfHour} onChange={(e) => {
-                        setEnterHalfHour(e.value)
-                        setEnterPoint(originalEnterPoint + e.value.code)
-                        }} options={hourElements? availableHours.indexOf(originalEnterPoint + 1) != -1 ? [{name: "00", code: 0}, {name: "30", code: 1}] : [{name: "00", code: 0}] : []} optionLabel="name" className="enterHour-dropdown" checkmark={true}  highlightOnSelect={false} />
+                <HeaderComponent burgerShown={burgerShown} showBurger={showBurger} />
+                <div className="container top-section login-section">
+                    <div className="entrance-block">
+                        <h2>Het <span>wachtwoord</span>:</h2>
+                        <div className="passInput-block">
+                            <div className="visibilityButton">
+                                <img src={passwordShown ? visibilityOff : visibility} alt="" onClick={() => showThePassword(!passwordShown)} onPaste={() => handlePaste()} />
+                            </div>
+                            <input type={passwordShown ? "text" : "password"} className='password-input' value={userPassword} onChange={(e) => setUserPassword(e.target.value)} />
                         </div>
+                        <div className={isButtonAvailable ? "enterAdminButton" : "enterAdminButton disable"} onClick={handleLogin}>
+                            Inloggen
                         </div>
-                        <div className={typeof enterPoint == 'number'? progressStep == 1? "next-button-sec": "next-button-sec reversed" : "next-button-sec unavailable"} onClick={() => {
-                            if (typeof enterPoint == 'number') {
-                                if (progressStep == 1) {
-                                    setProgressStep(2)
-                                }
-                                else {
-                                    setProgressStep(1)
-                                }
-                            }
-                        }}>
-                        <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z"/></svg>
-                        </div>
-                        {progressStep == 2?                     <div className="enterHoursBlock">
-                        <h5>Hoe laat ben je klaar</h5>
-                        <div className='enterHours-sec hidden'>
-                        <Dropdown disabled={progressStep == 2? false : true} defaultValue={"00"} value={exitHour} onChange={(e) => {
-                        setExitHour(e.value)
-                        setOriginalExitPoint(e.value.code)
-                        setExitPoint(e.value.code)
-                        setExitHalfHour({name: "00", code: 0})
-                        }} options={exitHoursListToShow} optionLabel="name" className="enterHour-dropdown" checkmark={true}  highlightOnSelect={false} />
-                        <h2>:</h2>
-                        <Dropdown disabled={progressStep == 2? false : true} value={exitHalfHour} onChange={(e) => {
-                        setExitHalfHour(e.value)
-                        setExitPoint(originalExitPoint + e.value.code)
-                        }} options={hourElements? availableExitHours.indexOf(originalExitPoint + 1) != -1 ? [{name: "00", code: 0}, {name: "30", code: 1}] : [{name: "00", code: 0}] : []} optionLabel="name" className="enterHour-dropdown" checkmark={true}  highlightOnSelect={false} />
-                        </div>
-                        </div> : ''}
-                    </div>
-                    : ''}
-                    {timeRange != '' && timeRange != '0 uur' && progressStep == 2? 
-                    <button className={isSubmit ? 'booking-submit' : 'booking-submit disable'} type='button' onClick={async () => { isSubmit ? await handleFormSubmit() : '' }}>
-                    Maak een boeking
-                </button> : ''}
-                </form>
-                </> :   
-                <>
-                <h2 className="section-name centered">
-                je bent <span className="orange">klaar</span>!
-                </h2>
-                <p className="title-p centered">
-                Uw boeking is succesvol aangemaakt! Bewaar uw BookingID, voor het geval u de boeking wilt annuleren of uw persoonlijke gegevens wilt wijzigen.
-                </p>
-                <div className="orderInfo-sec">
-                    <BookingCard fullName={`${firstName? firstName : "Name"} ${lastName? lastName : "Surname"}`} userEmail={userEmail} phoneNumber={phoneNumber} bookingTime={formatedDateString} bookingId={bookingId} fullDate={originalDate} deleteMode="user"></BookingCard>
-                    <div className="qrCode-container">
-                        <QRCode value={bookingId} size={380}></QRCode>
                     </div>
                 </div>
-                </>}
-            
-        </div>
-        <FooterComponent></FooterComponent>
-        </>
+                <FooterComponent />
+            </>
+            :
+            <>
+            <HeaderComponent burgerShown={burgerShown} showBurger={showBurger}></HeaderComponent>
+            <div className="container top-section">
+                {bookingId.length == 0 ?
+                <>
+                <h2 className="section-name">
+                Maak samen met ons uw <span className="orange">meesterwerk</span>
+                </h2>
+                <p className="title-p">
+                vul dit eenvoudige formulier in om een gratis boeking te maken
+                </p>
+                        <form>
+                        <div className='full-name-sec'>
+                            <div className="inputBlock">
+                                <h5 className='form-input-title'>Voornaam</h5>
+                                <input type="text" placeholder='Vul uw voornaam in' value={firstName} onChange={(e) => setFirstName(e.target.value)}/>
+                            </div> 
+                            <div className="inputBlock">
+                                <h5 className='form-input-title'>Achternaam</h5>
+                                <input type="text" placeholder='Vul uw achternaam in' value={lastName} onChange={(e) => setLastName(e.target.value)}/>
+                            </div> 
+                        </div>
+                        <div className="inputBlock">
+                            <h5>Email</h5>
+                            <input type="email" placeholder='Vul uw email in' value={userEmail} onChange={(e) => setUserEmail(e.target.value)}/>
+                        </div>
+                        <div className="inputBlock">
+                            <h5>Telefoon</h5>
+                            <input type="tel" placeholder='Vul uw telefoonnummer in' value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)}/>
+                        </div>
+                        <div className="inputBlock">
+                            <h5>Welke dag wil je komen</h5>
+                            <Calendar value={date} onChange={handleDateChange} dateFormat="dd.mm.yy" readOnlyInput/>
+                        </div>
+                        <div className='hours-sec'>
+                            {hourElements}
+                        </div>
+                        {typeof enterPoint == 'number' && typeof exitPoint == 'number' && exitPoint - enterPoint >= 1? 
+                        <h3 className="timeRange">
+                        {progressStep == 2 && (timeRange != '' || timeRange != '0 uur')? timeRange : ''} 
+                        </h3> : ''}
+                        {hourElements ?                 
+                            <div className='hours-choosing-sec'>
+                            <div className="enterHoursBlock">
+                            <h5>Hoe laat wil je komen</h5>
+                            <div className='enterHours-sec hidden'>
+                            <Dropdown disabled={progressStep == 1? false : true} defaultValue={"00"} value={enterHour} onChange={(e) => {
+                            setEnterHour(e.value)
+                            setOriginalEnterPoint(e.value.code)
+                            setEnterPoint(e.value.code)
+                            setEnterHalfHour({name: "00", code: 0})
+                            }} options={hoursListToShow} optionLabel="name" className="enterHour-dropdown" checkmark={true}  highlightOnSelect={false} />
+                            <h2>:</h2>
+                            <Dropdown disabled={progressStep == 1? false : true} value={enterHalfHour} onChange={(e) => {
+                            setEnterHalfHour(e.value)
+                            setEnterPoint(originalEnterPoint + e.value.code)
+                            }} options={hourElements? availableHours.indexOf(originalEnterPoint + 1) != -1 ? [{name: "00", code: 0}, {name: "30", code: 1}] : [{name: "00", code: 0}] : []} optionLabel="name" className="enterHour-dropdown" checkmark={true}  highlightOnSelect={false} />
+                            </div>
+                            </div>
+                            <div className={typeof enterPoint == 'number'? progressStep == 1? "next-button-sec": "next-button-sec reversed" : "next-button-sec unavailable"} onClick={() => {
+                                if (typeof enterPoint == 'number') {
+                                    if (progressStep == 1) {
+                                        setProgressStep(2)
+                                    }
+                                    else {
+                                        setProgressStep(1)
+                                    }
+                                }
+                            }}>
+                            <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z"/></svg>
+                            </div>
+                            {progressStep == 2?                     <div className="enterHoursBlock">
+                            <h5>Hoe laat ben je klaar</h5>
+                            <div className='enterHours-sec hidden'>
+                            <Dropdown disabled={progressStep == 2? false : true} defaultValue={"00"} value={exitHour} onChange={(e) => {
+                            setExitHour(e.value)
+                            setOriginalExitPoint(e.value.code)
+                            setExitPoint(e.value.code)
+                            setExitHalfHour({name: "00", code: 0})
+                            }} options={exitHoursListToShow} optionLabel="name" className="enterHour-dropdown" checkmark={true}  highlightOnSelect={false} />
+                            <h2>:</h2>
+                            <Dropdown disabled={progressStep == 2? false : true} value={exitHalfHour} onChange={(e) => {
+                            setExitHalfHour(e.value)
+                            setExitPoint(originalExitPoint + e.value.code)
+                            }} options={hourElements? availableExitHours.indexOf(originalExitPoint + 1) != -1 ? [{name: "00", code: 0}, {name: "30", code: 1}] : [{name: "00", code: 0}] : []} optionLabel="name" className="enterHour-dropdown" checkmark={true}  highlightOnSelect={false} />
+                            </div>
+                            </div> : ''}
+                        </div>
+                        : ''}
+                        {timeRange != '' && timeRange != '0 uur' && progressStep == 2? 
+                        <button className={isSubmit ? 'booking-submit' : 'booking-submit disable'} type='button' onClick={async () => { isSubmit ? await handleFormSubmit() : '' }}>
+                        Maak een boeking
+                    </button> : ''}
+                    </form>
+                    </> :   
+                    <>
+                    <h2 className="section-name centered">
+                    je bent <span className="orange">klaar</span>!
+                    </h2>
+                    <p className="title-p centered">
+                    Uw boeking is succesvol aangemaakt! Bewaar uw BookingID, voor het geval u de boeking wilt annuleren of uw persoonlijke gegevens wilt wijzigen.
+                    </p>
+                    <div className="orderInfo-sec">
+                        <BookingCard fullName={`${firstName? firstName : "Name"} ${lastName? lastName : "Surname"}`} userEmail={userEmail} phoneNumber={phoneNumber} bookingTime={formatedDateString} bookingId={bookingId} fullDate={originalDate} deleteMode="user"></BookingCard>
+                        <div className="qrCode-container">
+                            <QRCode value={bookingId} size={380}></QRCode>
+                        </div>
+                    </div>
+                    </>}
+                
+            </div>
+            <FooterComponent></FooterComponent>
+            </>
+        }
+    </>
     )
 }
 export default Booking

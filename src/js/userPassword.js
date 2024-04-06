@@ -1,0 +1,3 @@
+const requiredPassword = '90221552e4c6aa7765b0ab5af934788eb57c6f558ececc9428f60ed3a504e6f4'
+
+export default requiredPassword
