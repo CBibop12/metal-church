@@ -16,9 +16,21 @@ const HoursLine = ({ excludedHours }) => {
         const elements = [];
         for (let i = 0; i < 48; i++) {
             const isExcluded = excludedHourss.includes(i);
-            elements.push(
-                <div key={i} className={isExcluded ? 'halfHourElement busy' : 'halfHourElement'} />
-            );
+            if (isExcluded) {
+                elements.push(
+                    <div key={i} className='halfHourElement busy'/>
+                );  
+            }
+            else if (i < 13 || i > 44){
+                elements.push(
+                    <div key={i} className='halfHourElement inactive' />
+                );
+            }
+            else {
+                elements.push(
+                    <div key={i} className='halfHourElement' />
+                );
+            }
         }
         setHoursSec(elements);
     };

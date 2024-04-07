@@ -100,10 +100,16 @@ const Booking = ({burgerShown, showBurger}) => {
                 if (element) {
                     if (progressStep == 1) {
                         if (availableHoursList.indexOf(i) === -1) {
-                            element.classList.add("unavailable");
+                            
                             element.classList.remove("inactive");
                             element.classList.remove("picked");
                             element.classList.remove('mid')
+                            if (i < 13 || i > 44) {
+                                element.classList.add("inactive");
+                            }
+                            else {
+                                element.classList.add("unavailable");
+                            }
                         } else {
                             element.classList.remove("unavailable");
                             element.classList.remove("picked");
@@ -153,10 +159,18 @@ const Booking = ({burgerShown, showBurger}) => {
             // Создаем 48 элементов
             for (let i = 0; i < 48; i++) {
                 if (availableHoursList.indexOf(i) === -1) {
-                    elements.push(
-                        <div key={i} id={`halfHourElement-${i}`} className="halfHourElement unavailable">
-                        </div>
-                    );
+                    if (i < 13 || i > 44) {
+                        elements.push(
+                            <div key={i} id={`halfHourElement-${i}`} className="halfHourElement inactive">
+                            </div>
+                        );
+                    }    
+                    else {
+                        elements.push(
+                            <div key={i} id={`halfHourElement-${i}`} className="halfHourElement unavailable">
+                            </div>
+                        );
+                    }
                 } else {
                     elements.push(
                         <div key={i} id={`halfHourElement-${i}`} className="halfHourElement">
@@ -344,6 +358,29 @@ const Booking = ({burgerShown, showBurger}) => {
                     modifiedExcludedHours.push(47)
                 }
             }
+            for (let i = 0; i < 12; i++) {
+                let tempInd = excludedHours.indexOf(i)
+                if (tempInd == -1) {
+                    excludedHours.push(i)
+                    console.log("Want to exclude ", i);
+                    let modifiedTemp = modifiedExcludedHours.indexOf(i)
+                    if (modifiedTemp == -1) {
+                        modifiedExcludedHours.push(i)
+                    }
+                }
+            }
+            for (let i = 48; i > 44; i--) {
+                let tempInd = excludedHours.indexOf(i)
+                if (tempInd == -1) {
+                    excludedHours.push(i)
+                    console.log("Want to exclude ", i);
+                    let modifiedTemp = modifiedExcludedHours.indexOf(i)
+                    if (modifiedTemp == -1) {
+                        modifiedExcludedHours.push(i)
+                    }
+                }
+            }
+            console.log("RawExcludedHours for your date are: ", excludedHours)
             // Установить значение даты после успешной проверки доступности
             setRawAvailableHours(generateRawHours(excludedHours))
             console.log(rawAvailableHours);
