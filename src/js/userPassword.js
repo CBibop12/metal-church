@@ -1,3 +1,3 @@
-const requiredPassword = '90221552e4c6aa7765b0ab5af934788eb57c6f558ececc9428f60ed3a504e6f4'
+const requiredPassword = 'd14718ec54be1e80ef91ddc502a127c0e97b0bd85abebc20d820010f1dc7fae7'
 
 export default requiredPassword
